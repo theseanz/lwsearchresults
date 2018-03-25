@@ -9,6 +9,14 @@ angular.module('searchResults.detail', ['ngRoute'])
   });
 }])
 
-.controller('DetailCtrl', [function() {
-
+.controller('DetailCtrl', ['$scope', '$routeParams', 'iTunesService', function($scope, $routeParams, iTunesService) {
+  if (Object.keys(iTunesService.getResults()).length === 0) {
+    console.log('getting weezer');
+    iTunesService.search('weezer').then(function(){
+      $scope.itemDetails = iTunesService.getResults().results[$routeParams.itemId];
+      console.log($scope.itemDetails);
+    })
+  } else {
+    $scope.itemDetails = iTunesService.getResults().results[$routeParams.itemId];
+  }
 }]);

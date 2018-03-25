@@ -9,8 +9,10 @@ angular.module('searchResults.home', ['ngRoute'])
   });
 }])
 
-.controller('HomeCtrl', ['$scope', '$http', function($scope, $http) {
+.controller('HomeCtrl', ['$scope', '$routeParams', 'iTunesService', function($scope, $routeParams, iTunesService) {
   $scope.submitting = false;
+
+
 
   $scope.search = function() {
     $scope.offset = 0;
@@ -18,13 +20,11 @@ angular.module('searchResults.home', ['ngRoute'])
     $scope.response = null;
     $scope.submitting = true;
 
-    $http.get('https://itunes.apple.com/search?term=' + $scope.searchText)
-  .then(function successCallback(response) {
-    $scope.submitting = false;
-    $scope.response = response.data;
-    }, function error(response) {
-      console.log('error:', response);
-    });
+    iTunesService.search($scope.searchText).then(function(){
+      $scope.submitting = false;
+      $scope.response = iTunesService.getResults();
+    })
+
   };
 
   $scope.changePage = function(page) {
@@ -48,6 +48,11 @@ angular.module('searchResults.home', ['ngRoute'])
       default:
         $scope.offset = ($scope.limit * page)
     }
+  };
+
+  if (typeof $routeParams.searchTerm !== 'undefined') {
+    $scope.searchText = $routeParams.searchTerm;
+    $scope.search();
   }
 
 }]);
