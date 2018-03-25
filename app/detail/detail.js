@@ -9,14 +9,17 @@ angular.module('searchResults.detail', ['ngRoute'])
   });
 }])
 
-.controller('DetailCtrl', ['$scope', '$routeParams', 'iTunesService', function($scope, $routeParams, iTunesService) {
+.controller('DetailCtrl', ['$scope', '$routeParams', 'iTunesService', function ($scope, $routeParams, iTunesService) {
   if (Object.keys(iTunesService.getResults()).length === 0) {
     console.log('getting weezer');
-    iTunesService.search('weezer').then(function(){
-      $scope.itemDetails = iTunesService.getResults().results[$routeParams.itemId];
-      console.log($scope.itemDetails);
-    })
+    iTunesService.search('weezer').then(function () {
+      $scope.itemDetails = iTunesService.getResults().results.filter(function (item) {
+        return item.trackId === parseInt($routeParams.itemId);
+      })[0];
+    });
   } else {
-    $scope.itemDetails = iTunesService.getResults().results[$routeParams.itemId];
+    $scope.itemDetails = iTunesService.getResults().results.filter(function (item) {
+        return item.trackId === parseInt($routeParams.itemId);
+      })[0];
   }
 }]);

@@ -6,8 +6,8 @@
   <button type="submit">Search</button>
 </form>
 <ul ng-if="response">
-  <li ng-repeat="(index, item) in response.results | limitTo:limit:offset">
-    <a href="#!/detail/{{index}}">{{ item.kind }} - {{ item.artistName }} - {{ item.trackName }}</a>
+  <li ng-repeat="item in response.results | limitTo:limit:offset">
+    <a href="#!/detail/{{item.trackId}}">{{ item.kind }} - {{ item.artistName }} - {{ item.trackName }}</a>
   </li>
 </ul>
 
