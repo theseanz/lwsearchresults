@@ -10,8 +10,7 @@
     <a href="#!/detail/{{item.trackId}}">{{ item.kind }} - {{ item.artistName }} - {{ item.trackName }}</a>
   </li>
 </ul>
-
-<div ng-if="submitting && !!response">Loading...</div>
+<div ng-if="submitting && !response">Loading...</div>
 
 <pagination ng-if="response"
             change-page="changePage"

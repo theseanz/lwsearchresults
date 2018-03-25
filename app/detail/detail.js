@@ -11,7 +11,6 @@ angular.module('searchResults.detail', ['ngRoute'])
 
 .controller('DetailCtrl', ['$scope', '$routeParams', 'iTunesService', function ($scope, $routeParams, iTunesService) {
   if (Object.keys(iTunesService.getResults()).length === 0) {
-    console.log('getting weezer');
     iTunesService.search('weezer').then(function () {
       $scope.itemDetails = iTunesService.getResults().results.filter(function (item) {
         return item.trackId === parseInt($routeParams.itemId);
