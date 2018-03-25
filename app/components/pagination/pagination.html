@@ -1,0 +1,4 @@
+<button ng-click="$ctrl.changePage('previous')" ng-disabled="$ctrl.prevDisabled">Previous page</button>
+<button ng-repeat="page in $ctrl.pages" ng-click="$ctrl.changePage($index)">{{ page }}</button>
+<button ng-click="$ctrl.changePage('next')" ng-disabled="$ctrl.nextDisabled">Next page</button>
+

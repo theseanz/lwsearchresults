@@ -1,0 +1,22 @@
+<h1>Search iTunes</h1>
+<form ng-submit="search()">
+<input type="text"
+       ng-model="searchText"
+       placeholder="Enter a song, artist, movie, etc">
+  <button type="submit">Search</button>
+</form>
+<ul ng-if="response">
+  <li ng-repeat="item in response.results | limitTo:limit:offset">
+    {{ item.kind }} - {{ item.artistName }} - {{ item.trackName }}
+  </li>
+</ul>
+
+<div ng-if="submitting && !!response">Loading...</div>
+
+<pagination ng-if="response"
+            change-page="changePage"
+            num-results="response.results.length"
+            limit="limit"
+            offset="offset"></pagination>
+
+
