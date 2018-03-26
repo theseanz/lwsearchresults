@@ -1,39 +1,29 @@
 'use strict';
+var app = angular.module('searchResults.home', ['ngRoute']);
 
-angular.module('searchResults.home', ['ngRoute'])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/home', {
-    templateUrl: 'home/home.html',
-    controller: 'HomeCtrl'
-  });
-}])
-
-.controller('HomeCtrl', ['$scope', '$routeParams', 'iTunesService',
-  function($scope, $routeParams, iTunesService) {
+app.controller('HomeCtrl', ['$scope', '$routeParams', 'iTunesService', function ($scope, $routeParams, iTunesService) {
   $scope.submitting = false;
 
 
-
-  $scope.search = function() {
+  $scope.search = function () {
     $scope.offset = 0;
     $scope.limit = 9;
     $scope.response = null;
     $scope.submitting = true;
 
-    iTunesService.search($scope.searchText).then(function(){
+    iTunesService.search($scope.searchText).then(function () {
       $scope.submitting = false;
       $scope.response = iTunesService.getResults();
     })
 
   };
 
-  $scope.changePage = function(page) {
+  $scope.changePage = function (page) {
     switch (page) {
       case 'next':
         if ($scope.offset + $scope.limit > $scope.response.resultCount) {
           return false;
-        }  else {
+        } else {
           $scope.offset += $scope.limit;
         }
         break;

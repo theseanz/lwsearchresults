@@ -9,8 +9,8 @@ app.config(['$locationProvider', '$routeProvider', function($locationProvider, $
   $locationProvider.hashPrefix('!');
 
   $routeProvider
-    .when('/home/:searchTerm', {templateUrl: 'home/home.html', controller: 'HomeCtrl' })
-    .when('/detail/:itemId', {templateUrl: 'detail/detail.html', controller: 'DetailCtrl' })
+    .when('/home/:searchTerm?', {templateUrl: 'home/home.html', controller: 'HomeCtrl' })
+    .when('/detail/:itemId?', {templateUrl: 'detail/detail.html', controller: 'DetailCtrl' })
     .otherwise({redirectTo: '/home'});
 }]);
 

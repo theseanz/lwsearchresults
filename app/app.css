@@ -24,12 +24,12 @@
   padding-right: 0.3em;
 }
 
-.result-card{
+.result-card {
   min-width: 13rem;
   margin-bottom: 2rem;
 }
 
-.card-title{
+.card-title {
   max-height: 2.5em;
   overflow: hidden;
   text-overflow: ellipsis;
