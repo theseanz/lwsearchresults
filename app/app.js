@@ -1,11 +1,11 @@
 'use strict';
-
-angular.module('searchResults', [
+var app = angular.module('searchResults', [
   'ngRoute',
   'searchResults.home',
   'searchResults.detail'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+]);
+
+app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
   $routeProvider
@@ -13,3 +13,15 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
     .when('/detail/:itemId', {templateUrl: 'detail/detail.html', controller: 'DetailCtrl' })
     .otherwise({redirectTo: '/home'});
 }]);
+
+app.filter('resizeImage', function(){
+  return function(input, newSize){
+    var output;
+    var newFileName = newSize + 'x' + newSize + 'bb.jpg';
+    input = input.split('/');
+    input.splice(-1,1);
+    input.push(newFileName);
+    output = input.join('/');
+    return output;
+  }
+});

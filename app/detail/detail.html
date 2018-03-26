@@ -1,1 +1,12 @@
-<h1>{{ itemDetails.artistName}} - {{ itemDetails.trackName }}</h1>
+<div class="card" ng-if="itemDetails">
+  <div class="card-body">
+    <h5 class="card-title">{{ itemDetails.artistName }} - {{ itemDetails.trackName }}</h5>
+    <p class="card-text">From  {{ itemDetails.collectionName }}</p>
+    <p class="card-text">${{ itemDetails.trackPrice }}</p>
+    <p class="card-text">
+      <small class="text-muted"><a href="{{ itemDetails.trackViewUrl }}">View on iTunes</a></small>
+    </p>
+  </div>
+  <img class="card-img" src="{{ itemDetails.artworkUrl100 | resizeImage:1000 }}"
+       alt="{{ itemDetails.artistName }} - {{ itemDetails.trackName }}">
+</div>

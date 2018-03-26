@@ -1,21 +1,48 @@
-<h1>Search iTunes</h1>
-<form ng-submit="search()">
-<input type="text"
-       ng-model="searchText"
-       placeholder="Enter a song, artist, movie, etc">
-  <button type="submit">Search</button>
-</form>
-<ul ng-if="response">
-  <li ng-repeat="item in response.results | limitTo:limit:offset">
-    <a href="#!/detail/{{item.trackId}}">{{ item.kind }} - {{ item.artistName }} - {{ item.trackName }}</a>
-  </li>
-</ul>
-<div ng-if="submitting && !response">Loading...</div>
+<div class="jumbotron">
+  <h1 class="display-4 text-center">Search iTunes</h1>
+  <div class="row justify-content-center">
+    <form ng-submit="search()" class="w-75">
+      <div class="input-group mb-3">
+        <input type="text"
+               class="form-control"
+               ng-model="searchText"
+               placeholder="Enter a song, artist, movie, etc">
+        <div class="input-group-append">
+          <button class="btn btn-outline" type="submit">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+    <div class="text-center mb-3">
+      <div ng-if="submitting && !response">Loading...</div>
+      <pagination ng-if="response"
+                  change-page="changePage"
+                  num-results="response.results.length"
+                  limit="limit"
+                  offset="offset"></pagination>
+  <div ng-if="response" class="row text-center">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" ng-repeat="item in response.results | limitTo:limit:offset">
+      <div class="card result-card">
+        <a href="#!/detail/{{item.trackId}}">
+          <img class="card-img-top" src="{{ item.artworkUrl100 | resizeImage:300 }}" alt="{{ item.artistName }} - {{ item.trackName }}">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.artistName }}</h5>
+          <h5 class="card-title">{{ item.trackName }}</h5>
+          <a href="#!/detail/{{item.trackId}}" class="btn btn-primary">More info...</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mb-3">
+    <pagination ng-if="response"
+              change-page="changePage"
+              num-results="response.results.length"
+              limit="limit"
+              offset="offset"></pagination>
+  </div>
 
-<pagination ng-if="response"
-            change-page="changePage"
-            num-results="response.results.length"
-            limit="limit"
-            offset="offset"></pagination>
+</div>
+
 
 

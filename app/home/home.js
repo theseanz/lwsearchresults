@@ -9,7 +9,8 @@ angular.module('searchResults.home', ['ngRoute'])
   });
 }])
 
-.controller('HomeCtrl', ['$scope', '$routeParams', 'iTunesService', function($scope, $routeParams, iTunesService) {
+.controller('HomeCtrl', ['$scope', '$routeParams', 'iTunesService',
+  function($scope, $routeParams, iTunesService) {
   $scope.submitting = false;
 
 

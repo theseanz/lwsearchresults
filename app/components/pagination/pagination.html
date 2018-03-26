@@ -1,4 +1,11 @@
-<button ng-click="$ctrl.changePage('previous')" ng-disabled="$ctrl.prevDisabled">Previous page</button>
-<button ng-repeat="page in $ctrl.pages" ng-click="$ctrl.changePage($index)">{{ page }}</button>
-<button ng-click="$ctrl.changePage('next')" ng-disabled="$ctrl.nextDisabled">Next page</button>
-
+<ul class="pagination justify-content-center flex-wrap">
+  <li class="page-item" ng-class="{'disabled' : $ctrl.prevDisabled}">
+    <a class="page-link" ng-click="$ctrl.changePage('previous')">Previous</a>
+  </li>
+  <li class="page-item" ng-repeat="page in $ctrl.pages">
+    <a class="page-link" ng-click="$ctrl.changePage($index)">{{ page }}</a>
+  </li>
+  <li class="page-item" ng-class="{'disabled': $ctrl.nextDisabled}">
+    <a class="page-link"  ng-click="$ctrl.changePage('next')">Next</a>
+  </li>
+</ul>
