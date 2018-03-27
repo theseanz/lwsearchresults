@@ -1,17 +1,20 @@
 'use strict';
 
-describe('searchResults.detail module', function () {
-  beforeEach(module('searchResults.detail'));
+describe('DetailController', function () {
+  beforeEach(module('searchResults'));
 
-  it('initialises scope',
-    inject(function ($controller, $rootScope) {
-      var scope = $rootScope.$new();
-      var ctrl = $controller('DetailCtrl',
-        {
-          $scope: scope
-        });
-      expect(scope.blah).toBe('blah')
+  var $controller;
+
+  beforeEach(inject(function(_$controller_) {
+    $controller = _$controller_;
+  }));
+
+  describe('DetailCtrl', function() {
+    it('just testing this works', function() {
+      var $scope = {};
+      var controller = $controller('DetailCtrl', {$scope: $scope});
     })
-  )
-  ;
+  })
+
+
 });

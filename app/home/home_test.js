@@ -1,16 +1,30 @@
 'use strict';
 
-describe('searchResults.home module', function() {
+describe('HomeController', function () {
+  var HomeCtrl;
+  var $controller;
+  var $rootScope;
 
-  beforeEach(module('searchResults.home',  ['$scope', '$routeParams', 'iTunesService']));
+  beforeEach(function() {
+    module('searchResults');
 
-  describe('home controller', function(){
+    inject(function(_$controller_, _$rootScope_){
+      $controller = _$controller_;
+      $rootScope = _$rootScope_;
+      var scope = $rootScope.$new();
+      HomeCtrl = $controller('HomeCtrl', {$scope: scope});
+    });
+  });
 
-    it('should ....', inject(function($controller) {
-      //spec body
-      var HomeCtrl = $controller('HomeCtrl');
-      expect(HomeCtrl).toBeDefined();
-    }));
+  describe('Home Controller', function() {
+    it('should exist', function () {
+      assert.exists(HomeCtrl);
+    });
+
+    it('should search iTunes', function () {
+      assert.exists($scope);
+    })
 
   });
+
 });

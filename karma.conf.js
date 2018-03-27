@@ -2,6 +2,8 @@
 module.exports = function(config) {
   config.set({
 
+    frameworks: ['mocha', 'sinon', 'chai'],
+
     basePath: './app',
 
     files: [
@@ -9,28 +11,28 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'app.js',
-      'services/**/*.service.js',
+      'services/itunes/itunes.service.js',
       'components/**/*.js',
-      'detail/*.js'
+      'detail/*.js',
+      'home/*.js'
     ],
 
     autoWatch: true,
 
-    frameworks: ['jasmine'],
+    client: {
+      mocha: {
+        reporter: 'html'
+      }
+    },
 
     browsers: ['Chrome'],
 
     plugins: [
       'karma-chrome-launcher',
-      'karma-firefox-launcher',
-      'karma-jasmine',
+      'karma-mocha',
+      'karma-sinon',
+      'karma-chai',
       'karma-junit-reporter'
-    ],
-
-    junitReporter: {
-      outputFile: 'test_out/unit.xml',
-      suite: 'unit'
-    }
-
+    ]
   });
 };
