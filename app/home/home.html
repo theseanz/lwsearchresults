@@ -13,36 +13,27 @@
       </div>
     </form>
   </div>
-    <div class="text-center mb-3">
-      <div ng-if="submitting && !response">Loading...</div>
-      <pagination ng-if="response"
-                  change-page="changePage"
+  <div class="text-center mb-3">
+    <div ng-if="submitting && !response">Loading...</div>
+    <div ng-if="response">
+      <pagination change-page="changePage"
                   num-results="response.results.length"
                   limit="limit"
                   offset="offset"></pagination>
-  <div ng-if="response" class="row text-center">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" ng-repeat="item in response.results | limitTo:limit:offset">
-      <div class="card result-card">
-        <a href="#!/detail/{{item.trackId}}">
-          <img class="card-img-top" src="{{ item.artworkUrl100 | resizeImage:300 }}" alt="{{ item.artistName }} - {{ item.trackName }}">
-        </a>
-        <div class="card-body">
-          <h5 class="card-title">{{ item.artistName }}</h5>
-          <h5 class="card-title">{{ item.trackName }}</h5>
-          <a href="#!/detail/{{item.trackId}}" class="btn btn-primary">More info...</a>
+      <div class="row text-center card-deck">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 mb-3" ng-repeat="item in response.results | limitTo:limit:offset">
+          <movie-card ng-if="item.kind==='feature-movie'"
+                      movie="item"></movie-card>
+          <music-card ng-if="item.kind!=='feature-movie'"
+                      song="item"></music-card>
         </div>
+      </div>
+      <div class="text-center mb-3">
+        <pagination change-page="changePage"
+                    num-results="response.results.length"
+                    limit="limit"
+                    offset="offset"></pagination>
       </div>
     </div>
   </div>
-  <div class="text-center mb-3">
-    <pagination ng-if="response"
-              change-page="changePage"
-              num-results="response.results.length"
-              limit="limit"
-              offset="offset"></pagination>
-  </div>
-
 </div>
-
-
-

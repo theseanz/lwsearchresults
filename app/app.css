@@ -35,3 +35,8 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.movie-image-container {
+  height: 50%;
+  overflow: hidden;
+}

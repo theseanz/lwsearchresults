@@ -27,6 +27,4 @@ app.controller('paginationController', function() {
     this.prevDisabled = (this.offset === 0);
     this.nextDisabled = ((this.offset + this.limit) > this.numResults);
   }
-
-
 });

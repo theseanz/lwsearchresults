@@ -1,0 +1,11 @@
+<div class="card result-card">
+  <a href="#!/detail/{{$ctrl.song.trackId}}">
+    <img class="card-img-top" ng-src="{{ $ctrl.song.artworkUrl100 | resizeImage:300 }}"
+         alt="{{ $ctrl.song.artistName }} - {{ $ctrl.song.trackName }}">
+  </a>
+  <div class="card-body">
+    <h5 class="card-title">{{ $ctrl.song.artistName }}</h5>
+    <h5 class="card-title">{{ $ctrl.song.trackName }}</h5>
+    <a href="#!/detail/{{$ctrl.song.trackId}}" class="btn btn-primary">More info...</a>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="card result-card">
+  <a href="#!/detail/{{$ctrl.movie.trackId}}">
+    <div class="card-img-top">
+      <img ng-src="{{ $ctrl.movie.artworkUrl100 | resizeImage:300 }}"
+           alt="{{ $ctrl.movie.artistName }} - {{ $ctrl.movie.trackName }}">
+    </div>
+  </a>
+  <div class="card-body">
+    <h5 class="card-title">{{ $ctrl.movie.artistName }}</h5>
+    <h5 class="card-title">{{ $ctrl.movie.trackName }}</h5>
+    <a href="#!/detail/{{$ctrl.movie.trackId}}" class="btn btn-primary">More info...</a>
+  </div>
+</div>
