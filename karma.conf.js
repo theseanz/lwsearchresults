@@ -19,6 +19,8 @@ module.exports = function(config) {
 
     autoWatch: true,
 
+    reporters: ['mocha'],
+
     client: {
       mocha: {
         reporter: 'html'
@@ -32,7 +34,7 @@ module.exports = function(config) {
       'karma-mocha',
       'karma-sinon',
       'karma-chai',
-      'karma-junit-reporter'
+      'karma-mocha-reporter'
     ]
   });
 };

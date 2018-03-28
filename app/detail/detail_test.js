@@ -2,19 +2,25 @@
 
 describe('DetailController', function () {
   beforeEach(module('searchResults'));
+  var controller, scope;
+  var iTunesService
 
-  var $controller;
-
-  beforeEach(inject(function(_$controller_) {
-    $controller = _$controller_;
+  beforeEach(inject(function ($controller, $rootScope, $injector) {
+    scope = $rootScope.$new();
+    controller = $controller('DetailCtrl', {$scope: scope});
+    iTunesService = $injector.get('iTunesService');
   }));
 
-  describe('DetailCtrl', function() {
-    it('just testing this works', function() {
-      var $scope = {};
-      var controller = $controller('DetailCtrl', {$scope: $scope});
-    })
+  describe('iTunesService', function () {
+    it('should exist', function () {
+      expect(iTunesService).to.exist;
+    });
+
+    it('should search iTunes', function () {
+      var iTunesSearch = sinon.spy(iTunesService, 'search');
+      iTunesSearch();
+      assert(iTunesSearch.calledOnce);
+    });
+
   })
-
-
 });
