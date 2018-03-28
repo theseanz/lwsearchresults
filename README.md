@@ -1,4 +1,4 @@
-# Sean Stevens Search Results SPA
+# Sean Stevens Search Results SPA - Search iTunes
 * Based on [Angular Seed](https://github.com/angular/angular-seed)
 * npm install
 * npm start
@@ -10,3 +10,4 @@ Note: browser window will open with the npm start command.
 1. Different item templates (movie vs non-movie)
 1. Landing page for search terms (!#/home/[searchterm])
 1. Responsive design
+1. Some testing..this is not my area of expertise but I set up some unit tests on both controllers, including testing the service used to call iTunes.
