@@ -2,6 +2,7 @@
 * Based on [Angular Seed](https://github.com/angular/angular-seed)
 * npm install
 * npm start
+* npm test to run tests
 
 Note: browser window will open with the npm start command.
 
